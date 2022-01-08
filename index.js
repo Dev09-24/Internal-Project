@@ -32,7 +32,7 @@ recognition.onresult = function(event) {
     speech.rate = 1;
     speech.pitch = 1;   
     
-     var res1 = /hi/;
+     var res1 = /hey/;
      var res2 = /hello/;
      var res3 = /Google/;
      var res4 = /YouTube/;
@@ -41,9 +41,10 @@ recognition.onresult = function(event) {
      var res7 = /Facebook/;
      var res8 = /Amazon/;
      var res9 = /Flipkart/;
-     var res10 = /geeks for geeks/;
+     var res10 = /Geeks for Geeks/;
      var res11 = /Java T point/;
-     var res12 = /song/;
+     var res12 = /Hindi music/;
+     var res13 = /English music/;
 
     // greeting alex
     if(res1.test(transcript) || res2.test(transcript))  {
@@ -51,12 +52,12 @@ recognition.onresult = function(event) {
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-    else if(transcript === "how are you") {
+    else if(transcript === "Alex how are you") {
         speech.text = "I am good , and what about you ?";
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-    else if(transcript === "Even i am good" || transcript ==="mai bhi theek hu")  {
+    else if(transcript === "even I am good")  {
         speech.text = "that's great , how can i help you?";
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
@@ -102,7 +103,7 @@ recognition.onresult = function(event) {
 
     else if(res10.test(transcript)) {
         speech.text = "okay , opening geeks for geeks";
-        window.open("www.geeksforgeeks.org" , "_blank");
+        window.open("https://www.geeksforgeeks.org/" , "_blank");
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
@@ -115,8 +116,14 @@ recognition.onresult = function(event) {
     }
     
     else if(res12.test(transcript)) {
-        speech.text = "okay , playing songs";
+        speech.text = "okay , playing Hindi songs. Enjoy";
         window.open("https://www.youtube.com/watch?v=0CmcaWyzPtM" , "_blank");
+        console.log(speech.text)
+        window.speechSynthesis.speak(speech);
+    }
+    else if(res13.test(transcript)) {
+        speech.text = "okay , playing English songs. Enjoy";
+        window.open("https://www.youtube.com/watch?v=z8y8UZMQaLo" , "_blank");
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
@@ -129,13 +136,11 @@ recognition.onresult = function(event) {
         const months = ["January" , "February" , "March" , "April" , "May" , "June" , "July" , "August" , "September" , "October" , "November" , "December"]
         const month = months[d.getMonth()];
 
-        
-
         speech.text = `today's date is ${d.getDate()} ${month} ${d.getFullYear()}`;
 
         window.speechSynthesis.speak(speech);
     }
-
+    
     else if(res6.test(transcript)) {
         const d = new Date();
         const days = ["Sunday" , "Monday" , "Tuesday" , "Wednesday" , "Thursday" , "Friday" , "Saturday" , "Sunday"];
@@ -149,8 +154,6 @@ recognition.onresult = function(event) {
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-
-
     
 };
               
