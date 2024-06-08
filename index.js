@@ -1,18 +1,14 @@
 const btn = document.querySelector('#btn');
-
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
-            
 // This runs when the speech recognition service starts
 recognition.onstart = function() {
     console.log("We are listening. Try speaking into the microphone.");
 };
-
 recognition.onspeechend = function() {
     // when user is done speaking
     recognition.stop();
-}
-              
+}            
 // This runs when the speech recognition service returns result
 recognition.onresult = function(event) {
     var transcript = event.results[0][0].transcript;
@@ -25,8 +21,7 @@ recognition.onresult = function(event) {
     console.log(transcript)
 
     let speech = new SpeechSynthesisUtterance();
-    
-    speech.lang = "en-US";
+    speech.lang = "hindi-IND";
     
     speech.volume = 1;
     speech.rate = 1;
@@ -45,6 +40,9 @@ recognition.onresult = function(event) {
      var res11 = /Java T point/;
      var res12 = /Hindi music/;
      var res13 = /English music/;
+     var res14 = /home/;
+     var res15 = /assignment/;
+     var res16 = /Monu/;
 
     // greeting alex
     if(res1.test(transcript) || res2.test(transcript))  {
@@ -63,58 +61,49 @@ recognition.onresult = function(event) {
         window.speechSynthesis.speak(speech);
     }
 
-
     //opening websites
     else if(res3.test(transcript)) {
         speech.text = "okay , opening Google";
         window.open("https://www.google.com" , "_blank");
         console.log(speech.text)
-        window.speechSynthesis.speak(speech);
-    
+        window.speechSynthesis.speak(speech);    
     }
-
     else if(res4.test(transcript)) {
         speech.text = "okay , opening YouTube";
         window.open("https://www.youtube.com" , "_blank");
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-
     else if(res7.test(transcript)) {
         speech.text = "okay , opening facebook";
         window.open("https://www.facebook.com" , "_blank");
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-
     else if(res8.test(transcript)) {
         speech.text = "okay , opening amazon";
         window.open("https://www.amazon.in/" , "_blank");
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-
     else if(res9.test(transcript)) {
         speech.text = "okay , opening flipkart";
         window.open("https://www.flipkart.com/" , "_blank");
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-
     else if(res10.test(transcript)) {
         speech.text = "okay , opening geeks for geeks";
         window.open("https://www.geeksforgeeks.org/" , "_blank");
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-
     else if(res11.test(transcript)) {
         speech.text = "okay , opening java t point";
         window.open("https://www.javatpoint.com/" , "_blank");
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-    
     else if(res12.test(transcript)) {
         speech.text = "okay , playing Hindi songs. Enjoy";
         window.open("https://www.youtube.com/watch?v=0CmcaWyzPtM" , "_blank");
@@ -127,8 +116,21 @@ recognition.onresult = function(event) {
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
     }
-
-
+    else if(res14.test(transcript)) {
+        speech.text = "okay , gagan is a chutiya";
+        console.log(speech.text)
+        window.speechSynthesis.speak(speech);
+    }
+    else if(res15.test(transcript)) {
+        speech.text = "areee gand may baaadd gyya assignment";
+        console.log(speech.text)
+        window.speechSynthesis.speak(speech);
+    }
+    else if(res16.test(transcript)) {
+        speech.text = "aree moonu khaddee hoo college niklo saarre";
+        console.log(speech.text)
+        window.speechSynthesis.speak(speech);
+    }
     //knowing date
 
     else if (res5.test(transcript)) {
@@ -140,7 +142,6 @@ recognition.onresult = function(event) {
 
         window.speechSynthesis.speak(speech);
     }
-    
     else if(res6.test(transcript)) {
         const d = new Date();
         const days = ["Sunday" , "Monday" , "Tuesday" , "Wednesday" , "Thursday" , "Friday" , "Saturday" , "Sunday"];
@@ -148,15 +149,12 @@ recognition.onresult = function(event) {
         speech.text = `Today is ${day}`
         window.speechSynthesis.speak(speech);
     }
-
     else {
         speech.text = "sorry i don't have any information regarding this";
         console.log(speech.text)
         window.speechSynthesis.speak(speech);
-    }
-    
-};
-              
+    }  
+};        
 // start recognition
 btn.addEventListener('click' , ()=> {
     recognition.start();
